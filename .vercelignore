@@ -1,0 +1,15 @@
+# Archivos de desarrollo que no van a producción
+*.md.backup
+.todo
+debug.log
+test-results/
+screenshots/
+
+# Configuraciones locales específicas de IDE
+.vscode/settings.json
+.vscode/launch.json
+
+# Archivos de prueba
+test.html
+test.js
+playground/
