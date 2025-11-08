@@ -787,7 +787,7 @@ function AgendaView({ selectedDate, onDateChange, userRole, userName, userProfes
     <div className="bg-white rounded-lg shadow p-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold text-gray-900">
-          Agenda - {new Date(selectedDate).toLocaleDateString('es-ES', {
+          Agenda - {new Date(selectedDate + 'T00:00:00').toLocaleDateString('es-ES', {
             weekday: 'long',
             year: 'numeric',
             month: 'long',

@@ -78,7 +78,7 @@ function WaitingRoom() {
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Sala de Espera</h1>
           <p className="text-gray-600">
-            {new Date(selectedDate).toLocaleDateString('es-ES', {
+            {new Date(selectedDate + 'T00:00:00').toLocaleDateString('es-ES', {
               weekday: 'long',
               year: 'numeric',
               month: 'long',
