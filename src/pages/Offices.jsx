@@ -200,7 +200,7 @@ function Offices() {
               <h3 className="text-lg font-semibold">Confirmar eliminación</h3>
             </div>
             <p className="text-gray-600 mb-6">
-              ¿Estás seguro de que deseas eliminar el consultorio "{showDeleteConfirm.name}"? 
+              ¿Estás seguro de que deseas eliminar el consultorio &quot;{showDeleteConfirm.name}&quot;? 
               Esta acción no se puede deshacer.
             </p>
             <div className="flex gap-3 justify-end">
