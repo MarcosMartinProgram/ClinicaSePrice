@@ -43,11 +43,8 @@ function MedicalAttentions() {
   const [selectedAttention, setSelectedAttention] = useState(null)
 
   // Filtrar atenciones según el rol
-  const userAttentions = user.role === 'medico' 
-    ? medicalAttentions.filter(attention => {
-        const professional = getProfessionalById(attention.professionalId)
-        return professional?.fullName.toLowerCase().includes(user.name.toLowerCase())
-      })
+  const userAttentions = user.role === 'medico' && user.professionalId
+    ? medicalAttentions.filter(attention => attention.professionalId === user.professionalId)
     : medicalAttentions
 
   // Aplicar filtros
@@ -336,12 +333,8 @@ function MedicalAttentionModal({ mode, attention, onSave, onClose }) {
   const [errors, setErrors] = useState({})
 
   // Si es médico, filtrar turnos solo de ese profesional
-  const userAppointments = user.role === 'medico'
-    ? appointments.filter(app => {
-        const professional = getProfessionalById(app.professionalId)
-        return professional?.fullName.toLowerCase().includes(user.name.toLowerCase()) &&
-               app.status === 'confirmado'
-      })
+  const userAppointments = user.role === 'medico' && user.professionalId
+    ? appointments.filter(app => app.professionalId === user.professionalId && app.status === 'confirmado')
     : appointments.filter(app => app.status === 'confirmado')
 
   const validateForm = () => {

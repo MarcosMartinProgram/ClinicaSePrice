@@ -69,11 +69,8 @@ function Appointments() {
   })
 
   // Si es médico, mostrar solo sus turnos
-  const userAppointments = user.role === 'medico' 
-    ? filteredAppointments.filter(app => {
-        const prof = getProfessionalById(app.professionalId)
-        return prof && prof.fullName.includes(user.name.replace('Dr. ', '').replace('Dra. ', ''))
-      })
+  const userAppointments = user.role === 'medico' && user.professionalId
+    ? filteredAppointments.filter(app => app.professionalId === user.professionalId)
     : filteredAppointments
 
   const getStatusIcon = (status) => {
@@ -401,6 +398,7 @@ function Appointments() {
           onDateChange={setSelectedDate}
           userRole={user.role}
           userName={user.name}
+          userProfessionalId={user.professionalId}
         />
       )}
 
@@ -772,7 +770,7 @@ function NewAppointmentForm({ onSuccess }) {
 }
 
 // Componente para vista de agenda
-function AgendaView({ selectedDate, onDateChange, userRole, userName }) {
+function AgendaView({ selectedDate, onDateChange, userRole, userName, userProfessionalId }) {
   const { 
     professionals, 
     appointments,
@@ -781,8 +779,8 @@ function AgendaView({ selectedDate, onDateChange, userRole, userName }) {
     getSpecialtyById
   } = useData()
 
-  const relevantProfessionals = userRole === 'medico' 
-    ? professionals.filter(p => p.fullName.includes(userName.replace('Dr. ', '').replace('Dra. ', '')))
+  const relevantProfessionals = userRole === 'medico' && userProfessionalId
+    ? professionals.filter(p => p.id === userProfessionalId)
     : professionals
 
   return (

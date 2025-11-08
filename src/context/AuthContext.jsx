@@ -26,6 +26,7 @@ const mockUsers = [
     password: '123456',
     role: 'medico',
     name: 'Dr. Juan Pérez',
+    professionalId: 1, // Asociado al Dr. Juan Carlos Pérez (id: 1 en professionals)
     active: true
   },
   {
@@ -66,7 +67,8 @@ export function AuthProvider({ children }) {
         id: foundUser.id,
         username: foundUser.username,
         role: foundUser.role,
-        name: foundUser.name
+        name: foundUser.name,
+        professionalId: foundUser.professionalId // Incluir professionalId si existe
       }
 
       setUser(userSession)
